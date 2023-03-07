@@ -25,4 +25,4 @@
         * Vue Cli 官方的规则：plugin:vue/essential
         * React Cli 官方的规则：react-app
     * 在webpack中使用eslint-webpack-plugin 插件 
-2. 使用babel
+2. 使用babel，@babel/preset-env。生成的main.js中箭头函数等es6的语法已被替换

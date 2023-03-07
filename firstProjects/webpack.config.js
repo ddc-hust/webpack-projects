@@ -33,7 +33,11 @@ module.exports = {
                     }
                   }
             },
-
+            {
+                test: /\.js$/,
+                exclude: /node_modules/, // 排除node_modules代码不编译
+                loader: "babel-loader",
+              },
         ],
     },
     plugins: [

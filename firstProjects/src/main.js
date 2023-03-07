@@ -7,8 +7,3 @@ import "./sass/index.scss";
 
 console.log(count(2, 1));
 console.log(sum(1,2,3));
-
-var result1 = count(2, 1);
-console.log(result1);
-var result2 = sum(1, 2, 3, 4);
-console.log(result2);
