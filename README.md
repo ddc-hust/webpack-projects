@@ -26,3 +26,10 @@
         * React Cli 官方的规则：react-app
     * 在webpack中使用eslint-webpack-plugin 插件 
 2. 使用babel，@babel/preset-env。生成的main.js中箭头函数等es6的语法已被替换
+
+## 6. 处理html资源
+    * 插件HtmlWebpackPlugiin，可以生成html文件，并且在html文件中自动引入打包好的文件
+
+## 7. 开发模式和生产模式
+    * 开发者模式不需要得到编译的文件，只需要执行状态。所以开发者模式没有输出目录
+    * 生产者模式需要指定输出目录
