@@ -42,3 +42,39 @@
     * css的兼容性处理：postcss-loader postcss postcss-preset-env
     * css压缩
         * css-minimizer-webpack-plugin
+## 9. 脚本用法
+    * webpack 直接打包输出
+    * webpack serve 启动开发服务器，内存编译打包没有输出
+
+## 10. SourceMap
+    * 将打包后的代码的行和列映射会源文件的位置，帮助找出错误所在
+    * 开发模式：cheap-module-source-map
+        * 优点：打包编译速度快，只包含行映射
+        * 缺点：没有列映射
+    ```js
+        module.exports = {
+        // 其他省略
+        mode: "development",
+        devtool: "cheap-module-source-map",
+        };
+    ```
+    * 生产模式：source-map
+        * 优点：包含行/列映射
+        * 缺点：打包编译速度更慢
+    ```js
+        module.exports = {
+        // 其他省略
+        mode: "production",
+        devtool: "source-map",
+        };
+    ```
+## 11.提升打包构建速度
+    1. HMR，热替换，当修改某个模块的时候，只有这个模块需要重新打包编译，其它模块不变。（在程序运行中替换删除模块，而无需重新加载整个页面）。（vue-loader和react-hot-loader可以HMR）
+    2. OneOf：打包时通过test正则选择使用哪一个loader处理，使用OneOf就可以选择其中一个
+    3. Include/exclude: 比如对js文件的处理，排除node_modules下的js文件
+    4. Cache: 对eslint和babel编译结果进行缓存（在eslint插件下设置cache:true, 在js的loader下设置cacheDirectory:true）
+    5. 开始多进程
+## 12. 减少代码体积
+    1. Tree Shaking
+    2. babel：babel为每一个文件都加入了辅助代码，使得代码体积过大。使用@babel/plugin-transform-runtime
+    3. image-minimize-webpack-plugin：压缩图片体积
