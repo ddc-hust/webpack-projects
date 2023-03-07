@@ -33,3 +33,12 @@
 ## 7. 开发模式和生产模式
     * 开发者模式不需要得到编译的文件，只需要执行状态。所以开发者模式没有输出目录
     * 生产者模式需要指定输出目录
+
+## 8. CSS处理
+    * 抽离css文件
+        * 使用style-loader，只是把css文件打包进js文件中，在js文件中通过生成style标签来引用，不太好这种方法
+        * 应当把css文件抽离出来，形成单独的文件，通过link标签引用
+        * 使用`MiniCssExtractPlugin`插件，抽离css文件
+    * css的兼容性处理：postcss-loader postcss postcss-preset-env
+    * css压缩
+        * css-minimizer-webpack-plugin

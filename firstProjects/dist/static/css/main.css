@@ -1,0 +1,14 @@
+.box1 {
+    width : 100px;
+    height: 100px;
+    background-color: pink;
+}
+.box2 {
+  width: 100px;
+  height: 100px;
+  background-color: deeppink;
+  background-image: url(../../static/imgs/5fd07c01.jpeg);
+}
+
+.box3{width:100px;height:100px;background-color:hotpink;background-image:url(../../static/imgs/f539f9f9.jpg)}
+.box4{width:100px;height:100px;background-color:#ffb6c1}

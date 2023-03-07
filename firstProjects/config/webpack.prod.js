@@ -1,6 +1,8 @@
 const path = require("path");
 const ESLintWebpackPlugin = require("eslint-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
   entry: "./src/main.js",
@@ -15,19 +17,30 @@ module.exports = {
         // 用来匹配 .css 结尾的文件
         test: /\.css$/,
         // use 数组里面 Loader 执行顺序是从右到左
-        use: ["style-loader", "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader",
+                {
+                    loader: "postcss-loader",
+                    options: {
+                    postcssOptions: {
+                        plugins: [
+                        "postcss-preset-env", // 能解决大多数样式兼容性问题
+                        ],
+                    },
+                    },
+                },
+            ],
       },
       {
         test: /\.less$/,
-        use: ["style-loader", "css-loader", "less-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader"],
       },
       {
         test: /\.s[ac]ss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.styl$/,
-        use: ["style-loader", "css-loader", "stylus-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "stylus-loader"],
       },
       {
         test: /\.(png|jpe?g|gif|webp)$/,
@@ -70,6 +83,13 @@ module.exports = {
       // 新的html文件有两个特点：1. 内容和源文件一致 2. 自动引入打包生成的js等资源
       template: path.resolve(__dirname, "../public/index.html"),
     }),
+    // 提取css成单独文件
+    new MiniCssExtractPlugin({
+        // 定义输出文件名和目录
+        filename: "static/css/main.css",
+      }),
+      // css压缩
+    new CssMinimizerPlugin(),
   ],
   // devServer: {
   //   host: "localhost", // 启动服务器域名
