@@ -12,3 +12,7 @@
 2. css-loader
 3. less-loader
 4. sass-loader
+
+## 4. 处理图片资源
+1. webpack4中使用file-loader和url-loader
+2. webpack5内置好了，无需指定loader
