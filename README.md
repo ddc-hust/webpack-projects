@@ -15,4 +15,14 @@
 
 ## 4. 处理图片资源
 1. webpack4中使用file-loader和url-loader
-2. webpack5内置好了，无需指定loader
+2. webpack5内置好了，无需指定loader，直接使用`type:asset`,表示相当于url-loader, 将文件转化成 Webpack 能识别的资源，同时小于某个大小的资源会处理成 data URI 形
+
+## 5. 处理js资源
+1. 使用eslint进行代码格式检查
+    * 定义规则，rules。分三个等级，0，1， 2
+    * 可以使用继承现有的规则，就不用自己手动写了
+        * Eslint 官方的规则：eslint:recommended
+        * Vue Cli 官方的规则：plugin:vue/essential
+        * React Cli 官方的规则：react-app
+    * 在webpack中使用eslint-webpack-plugin 插件 
+2. 使用babel
