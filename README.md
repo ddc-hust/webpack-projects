@@ -78,3 +78,18 @@
     1. Tree Shaking
     2. babel：babel为每一个文件都加入了辅助代码，使得代码体积过大。使用@babel/plugin-transform-runtime
     3. image-minimize-webpack-plugin：压缩图片体积
+
+## 13. 优化代码运行性能
+    1. 代码分割：将打包后生成的文件进行代码分割，得到多个js文件。渲染哪个页面就只加载某个js文件、
+        * 分割文件：生成多个js文件
+        * 按需加载（懒加载）：需要哪个文件就加载哪个文件
+        1. 多入口文件
+        2. 提取重复代码，在配置的`optimization`中配置
+        3. 按需加载动态导入，
+        4. 单入口？？动态导入取名？
+    2. preload、prefetch：在浏览器空闲时间，加载后续需要使用的资源
+        * preload：告诉浏览器立即加载资源
+        * prefetch: 告诉浏览器在空闲时才开始加载资源
+        * （只加载资源，并不执行，都是缓存）
+    3. network cache: 使用hash确保更新后的文件不一样，避免直接读取缓存中未更新的文件
+    4. core-js：用于做ES6以及以上API的polyfill（补丁）
